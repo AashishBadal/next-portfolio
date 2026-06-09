@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg: 5 5 5; /* #050505 */
+    --fg: 248 248 248; /* #F8F8F8 */
+    color-scheme: dark;
+  }
+
+  * {
+    border-color: rgb(var(--fg) / 0.08);
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: rgb(var(--bg));
+    color: rgb(var(--fg));
+    font-feature-settings: "ss01", "cv01", "kern";
+    overflow-x: hidden;
+  }
+
+  /* Editorial selection */
+  ::selection {
+    background-color: rgb(var(--fg));
+    color: rgb(var(--bg));
+  }
+
+  /* Refined scrollbar */
+  ::-webkit-scrollbar {
+    width: 9px;
+  }
+  ::-webkit-scrollbar-track {
+    background: rgb(var(--bg));
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgb(var(--fg) / 0.14);
+    border-radius: 999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(var(--fg) / 0.24);
+  }
+
+  /* Visible, on-brand focus rings */
+  :focus-visible {
+    outline: 1px solid rgb(var(--fg) / 0.7);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Respect reduced motion globally as a safety net */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  /* Page shell with responsive editorial gutters */
+  .shell {
+    @apply mx-auto w-full max-w-shell px-6 sm:px-10 lg:px-16;
+  }
+
+  /* Fine-grain film noise — adds tactile depth without imagery */
+  .grain::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* Hairline divider */
+  .rule {
+    @apply h-px w-full bg-bone/10;
+  }
+}
+
+@layer utilities {
+  /* Soft radial vignette used behind hero/contact type */
+  .glow-radial {
+    background: radial-gradient(
+      60% 60% at 50% 40%,
+      rgb(var(--fg) / 0.06) 0%,
+      transparent 70%
+    );
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
