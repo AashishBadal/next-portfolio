@@ -166,13 +166,23 @@ export function Contact() {
                 Prefer email? Reach me directly.
               </p>
               <MagneticButton
-                href={`mailto:${SITE.email}`}
+                href={`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(SITE.email)}`}
                 strength={0.5}
                 className="border border-bone/20 px-8 py-5 text-lg text-bone transition-colors duration-500 ease-expo hover:border-bone hover:bg-bone hover:text-ink"
               >
                 {SITE.email}
                 <span aria-hidden className="text-xl">↗</span>
               </MagneticButton>
+              <p className="mt-6 text-sm text-smoke md:text-right">
+                Or call me.
+              </p>
+              <a
+                href={`tel:${SITE.phone}`}
+                data-cursor
+                className="mt-2 inline-block text-lg text-bone/80 transition-colors duration-300 hover:text-bone md:text-right"
+              >
+                {SITE.phone}
+              </a>
             </motion.div>
 
             <motion.ul

@@ -10,6 +10,7 @@ export const SITE = {
   role: "Full Stack Developer",
   location: "Kathmandu — Remote worldwide",
   email: "aashishbadal4@gmail.com",
+  phone: "+9779847685976",
   availability: "Available for select work — Q3 2026",
   tagline:
     "I build web products end to end — clean, responsive interfaces backed by solid APIs and data models.",
